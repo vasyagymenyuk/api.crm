@@ -1,17 +1,17 @@
 const { Model } = require('sequelize');
 
 module.exports = (sequelize, DataTypes) => {
-  class User extends Model {
+  class Category extends Model {
     static associate(models) {}
   }
 
-  User.init(
+  Category.init(
     {
-      email: {
+      name: {
         type: DataTypes.STRING,
         allowNull: false,
       },
-      password: {
+      imageSrc: {
         type: DataTypes.STRING,
         allowNull: false,
       },
@@ -19,10 +19,10 @@ module.exports = (sequelize, DataTypes) => {
 
     {
       sequelize,
-      modelName: 'User',
-      tableName: 'users',
+      modelName: 'Category',
+      tableName: 'categories',
     }
   );
 
-  return User;
+  return Category;
 };

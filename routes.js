@@ -1,63 +1,73 @@
 module.exports = [
   {
-    url: "/api",
+    url: '/api',
     children: [
       /////////////////////// AUTH
       {
-        url: "/auth",
+        url: '/auth',
         children: [
           // SIGN-UP
-          { method: "POST", url: "/sign-up", controller: "auth.signUp" },
+          { method: 'POST', url: '/sign-up', controller: 'auth.signUp' },
           // // SIGN-IN
-          { method: "POST", url: "/sign-in", controller: "auth.signIn" },
+          { method: 'POST', url: '/sign-in', controller: 'auth.signIn' },
         ],
       },
 
       //////////////////////// ORDER
       // CREATE
-      { method: "POST", url: "/order", controller: "order.create" },
+      { method: 'POST', url: '/order', controller: 'order.create' },
       // INDEX
-      { method: "GET", url: "/order", controller: "order.index" },
+      { method: 'GET', url: '/order', controller: 'order.index' },
 
       //////////////////// CATEGORY
       //  CREATE
-      { method: "POST", url: "/category", controller: "category.create" },
+      {
+        method: 'POST',
+        url: '/category',
+        middleware: 'passportMiddleware',
+        controller: 'category.create',
+      },
       //  INDEX
-      { method: "GET", url: "/category", controller: "category.index" },
+      {
+        method: 'GET',
+        url: '/category',
+        middleware: 'passportMiddleware',
+        controller: 'category.index',
+      },
       //  SHOW
-      { method: "GET", url: "/category/:id", controller: "category.show" },
+      { method: 'GET', url: '/category/:id', controller: 'category.show' },
       //  UPDATE
-      { method: "PATCH", url: "/category:id", controller: "category.update" },
+      { method: 'PATCH', url: '/category:id', controller: 'category.update' },
       //  DELETE
       {
-        method: "DELETE",
-        url: "/category:id",
-        controller: "category.destroy",
+        method: 'DELETE',
+        url: '/category:id',
+        controller: 'category.destroy',
       },
 
       ///////////// POSITION
       //  CREATE
-      { method: "POST", url: "/position", controller: "position.create" },
+      { method: 'POST', url: '/position', controller: 'position.create' },
       //  SHOW BY CATEGORY
       {
-        method: "GET",
-        url: "/position/:category",
-        controller: "position.showByCategory",
+        method: 'GET',
+        url: '/position/:category',
+        controller: 'position.showByCategory',
       },
       //  UPDATE
-      { method: "PATCH", url: "/position:id", controller: "position.update" },
+      { method: 'PATCH', url: '/position:id', controller: 'position.update' },
       //  DELETE
       {
-        method: "DELETE",
-        url: "/position/:id",
-        controller: "position.destroy",
+        method: 'DELETE',
+        url: '/position/:id',
+        controller: 'position.destroy',
       },
 
       ////////////// ANALYTICS
       //  OVERVIEW
-      { method: "POST", url: "/overview", controller: "analytics.overview" },
+      { method: 'POST', url: '/overview', controller: 'analytics.overview' },
       //  ANALYTIC
-      { method: "POST", url: "/analytic", controller: "analytics.analytic" },
+      { method: 'POST', url: '/analytic', controller: 'analytics.analytic' },
     ],
   },
 ];
